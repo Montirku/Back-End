@@ -18,7 +18,7 @@ COPY . ./
 RUN go build -o /montirku
 
 # tells Docker that the container listens on specified network ports at runtime
-EXPOSE 8080
+# EXPOSE 8080
 
 # command to be used to execute when the image is used to start a container
 CMD [ "/montirku" ]
