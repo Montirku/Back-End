@@ -16,5 +16,7 @@ func main() {
 	log.Println("Starting application...")
 	route := app.StartApp()
 
-	route.Start(":" + os.Getenv("APP_PORT"))
+	if err := route.Start(":" + os.Getenv("APP_PORT")); err != nil {
+		log.Fatalf("Failed to start the application: %v", err)
+	}
 }
