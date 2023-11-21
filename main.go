@@ -16,5 +16,5 @@ func main() {
 	log.Println("Starting application...")
 	route := app.StartApp()
 
-	route.Start(os.Getenv("APP_PORT"))
+	route.Start(":" + os.Getenv("APP_PORT"))
 }
