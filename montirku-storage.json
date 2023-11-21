@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "montirku",
+  "private_key_id": "4e975dc38c049f23eddc4d8efc9d2048d0d4213d",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCOx3PxliD0OqfZ\nSOLn3frjxGkWIPcHwRSW+z48Q48miDV+1qIP5ZeoypNSwZtX/RVBLzihBvtVcDh6\nkHBfrYBRa1rssTfj3V/jgwsxAkskaeiVzPiN8I/0L9KgGJYHBq2njtone+Rw8V9Q\nHoHIBsBpFdNO7gqmfuqxXJKTTXRkx05pCqKUf2HH8rXfY0f5NCAAmGM1wenuvQx0\nQtJoVULfHvcridIcBdyS9SXm0s7YPFT7yTF6zbOoDaAX+tBvTZgFe+cHPpz+nV39\nxcho8+XDcOtTIS05tFi8T9EjmybulrdjLk0t4DW5R9DxNQ/22HhrTwu7o2QfK4k2\nqv250WTtAgMBAAECggEAAKJUBRp7TjUIs+kO5rJiLiPGxwiMVaSJfQnyDYjL8Vhd\noHSGWLq6IsFhVnNAOU8z0ZLnK1BaWJ6gBgg2hOHQ4K8/F/ZX98+ZfSRYH8TDOlYB\naJh18XaLUZEHP9P95wYyZudg5hfhfJB6Tg262mDz9s4tgjueS0Sq6rf0QLFU+rjt\nERpD9t972vtD5nPzm4Fo8eux51K5aD7NsBnXTe8hL+dLLwya0ZBVSALhj7ikSixk\nec/IhsyC55GdIZu448BbCiLCbbQrli5Vdk/eWJz0LglRk2sDDwwNMQCEC0fusqS9\ndOt34GduHRHTeIEPmaGJgyHOHJTt3q9w+OuQUkPSkwKBgQC/qHcAvcxFdfEo/cgy\nB0HToyMy6EmkT/wOGxM3jLmsicU5ifr2tDxYEfIIv4Rwg38LfT33ke+84m2KBCB8\nD3uqk98k7Ru1zoepyAPRyre7j2llcVmtKGf9oTGFGl/bi87HFhUHm8qYrWVcdG0w\nnCJ6ymaaLkXfBzVaIGlgGM/E0wKBgQC+tjfnZbjfBrKkC+fx68Y3piR5C68Kqu5l\n+dOHtJMG77rOYhLoKEbYGd0IluFLMTON0o7WfwrjAlj1lTpNBN0CEnRv/lfo4d/H\nSQ+2xMT4tloNwsVe4rs28riFYtIPN0wszRdmB/fv+CXNquF7vych1bIJ6a7S4e/v\n7fXb71sXPwKBgBEpGF6sn9moUcuFzaMNG0vD06b/PXjE4KCys+nJY+aa/1nDjQEB\n6lVIZg96dnVMkNeKgz3jhz+2VnCBJhd1m3EOhHBd+pkwwNzm19C1AfZ9RMace5cR\ngx4mjLSKRAL4Za9VvtRLkrxQ6j54/j3X/Q5ZiQ5NDlyF3LURKd482n2ZAoGAeWtQ\nCl4EJtJ/19vQr4CZ8YIwxHRA3HzZTUmSeFrqJMdqWs2sFezWte05gad2BsZreUbu\nM/gseT1cX/bDaJfJEfGn+kmntJhiPeHxRD7g3SxUB2DTAkc+RIyiGCJDdPaS5A8r\nb4VxQHHvt5Ks/nlEM9F3CcKi0JaSiWIqXv10NEcCgYA/3BLb5L6wWUGDDXrqmOV4\nyXg/Q4pGgm76xKlH47ZBXkeofLrlIsQuCblX8MsXc0ZY1lkq2dPZlxQbM596s16Z\nZ5w1w1JNRwATLLEWlAOMRhi1oWFtWE4uPwyJQkAY5TGJTWU+1TDW7ynNk5AQjfhP\nIltJptaaqoT4eB7VaqLdAw==\n-----END PRIVATE KEY-----\n",
+  "client_email": "montirku-service-account@montirku.iam.gserviceaccount.com",
+  "client_id": "109572464152201001042",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/montirku-service-account%40montirku.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
