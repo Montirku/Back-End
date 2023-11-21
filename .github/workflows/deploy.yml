@@ -29,6 +29,10 @@ jobs:
         run: |
           gcloud builds submit --tag gcr.io/${{ env.PROJECT_ID }}/montirku:${{ env.SHORT_SHA }} .
 
+      - name: Set IAM policy for Cloud Run service
+        run: gcloud beta run services add-iam-policy-binding --region=asia-southeast2 --member=allUsers --role=roles/run.invoker montirku
+
+
       - name: Deploy Cloud Run service
         run: |
           gcloud run deploy montirku \
@@ -38,4 +42,5 @@ jobs:
             --allow-unauthenticated \
             --min-instances 1 \
             --max-instances 10 \
-            --set-env-vars DB_CONNECTION=mysql,APP_PORT=${{ secrets.APP_PORT }},DB_HOST=${{ secrets.DB_HOST }},DB_PORT=${{ secrets.DB_PORT }},DB_NAME=${{ secrets.DB_NAME }},DB_USERNAME=${{ secrets.DB_USERNAME }},DB_PASSWORD=${{ secrets.DB_PASSWORD }}
+            --set-env-vars DB_CONNECTION=mysql,APP_PORT=${{ secrets.APP_PORT }},DB_HOST=${{ secrets.DB_HOST }},DB_PORT=${{ secrets.DB_PORT }},DB_NAME=${{ secrets.DB_NAME }},DB_USERNAME=${{ secrets.DB_USERNAME }},DB_PASSWORD=${{ secrets.DB_PASSWORD }} \
+            --timeout 10m
