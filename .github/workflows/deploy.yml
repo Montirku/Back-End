@@ -29,8 +29,12 @@ jobs:
         run: |
           gcloud builds submit --tag gcr.io/${{ env.PROJECT_ID }}/montirku:${{ env.SHORT_SHA }} .
 
+      - name: Install gcloud beta components
+        run: gcloud components install beta
+      
       - name: Set IAM policy for Cloud Run service
         run: gcloud beta run services add-iam-policy-binding --region=asia-southeast2 --member=allUsers --role=roles/run.invoker montirku --quiet
+
         
       - name: Deploy Cloud Run service
         run: |
