@@ -7,8 +7,12 @@ import (
 
 type AuthUsecase interface {
 	Register(user *ue.RegisterRequest) error
+	Login(request *ue.LoginRequest) (interface{}, uint, error)
 	EmailVerification(request *ue.VerifyEmailRequest) (string, error)
 	EmailOTPVerification(request ue.VerifOtp) error
+	ForgotPassword(request *ue.ForgotPasswordRequest) (string, error)
+	PasswordOTPVerification(request ue.VerifOtp) error
+	ChangePassword(request ue.RecoveryRequest) error
 }
 
 type authUsecase struct {

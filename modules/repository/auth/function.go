@@ -16,6 +16,27 @@ func (ar *authRepo) GetUserByEmail(email string) (*ue.User, error) {
 	return user, nil
 }
 
+func (ar *authRepo) Login(email string) (*ue.AuthResponse, string, uint, bool, error) {
+	user := &ue.User{}
+	err := ar.db.Preload("UserDetail").Where("email = ?", email).First(&user).Error
+	if err != nil {
+		return nil, "", 0, false, errors.New("record not found")
+	}
+
+	response := &ue.AuthResponse{
+		ID:           user.ID,
+		GoogleId:     user.GoogleId,
+		Email:        user.Email,
+		Username:     user.Username,
+		FirstName:    user.UserDetail.FirstName,
+		LastName:     user.UserDetail.LastName,
+		Phone:        user.UserDetail.Phone,
+		ProfilePhoto: user.UserDetail.ProfilePhoto,
+	}
+
+	return response, user.Password, user.RoleId, user.EmailVerified, nil
+}
+
 func (ar *authRepo) CreateUser(user *ue.RegisterRequest) error {
 	existingUser := ue.User{}
 	if err := ar.db.Where("email = ?", user.Email).First(&existingUser).Error; err == nil {
@@ -95,6 +116,20 @@ func (ar *authRepo) DeleteUserRecovery(userId uint) error {
 
 	var userRecovery ue.UserRecovery
 	result := ar.db.Where("user_id = ?", userId).Delete(&userRecovery)
+
+	if err := result.Error; err != nil {
+		return err
+	}
+
+	if result.RowsAffected < 1 {
+		return errors.New("nothing has changed")
+	}
+
+	return nil
+}
+
+func (ar *authRepo) ChangePassword(user ue.RecoveryRequest) error {
+	result := ar.db.Model(&ue.User{}).Where("email = ?", user.Email).Update("password", user.Password)
 
 	if err := result.Error; err != nil {
 		return err
