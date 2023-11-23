@@ -4,6 +4,9 @@ import (
 	"fmt"
 
 	"github.com/fazaalexander/montirku-be/config"
+	"github.com/fazaalexander/montirku-be/database/seeds"
+	re "github.com/fazaalexander/montirku-be/modules/entity/role"
+	ue "github.com/fazaalexander/montirku-be/modules/entity/user"
 
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
@@ -13,7 +16,8 @@ var DB *gorm.DB
 
 func Init() {
 	InitDB()
-	// InitialMigration()
+	InitialMigration()
+	seeds.DBSeed(DB)
 }
 
 func InitDB() {
@@ -29,13 +33,19 @@ func InitDB() {
 		config.DB_NAME,
 	)
 
-	DB, err := gorm.Open(mysql.Open(connectionString), &gorm.Config{})
+	DB, err = gorm.Open(mysql.Open(connectionString), &gorm.Config{})
 	if err != nil {
 		panic("Failed to connect to database")
 	}
-	fmt.Println(DB)
 }
 
 func InitialMigration() {
-
+	DB.AutoMigrate(
+		re.Role{},
+		ue.User{},
+		ue.UserDetail{},
+		ue.UserRecovery{},
+	)
+	DB.Migrator().HasConstraint(&ue.User{}, "UserDetail")
+	DB.Migrator().HasConstraint(&re.Role{}, "Users")
 }
