@@ -11,14 +11,12 @@ func CreateUser() []*ue.User {
 	users := []*ue.User{
 		{
 			Email:         "admin@gmail.com",
-			Username:      "admin",
 			Password:      string(hashPasswordAdmin),
 			RoleId:        1,
 			EmailVerified: true,
 		},
 		{
 			Email:         "user@gmail.com",
-			Username:      "user",
 			Password:      string(hashPasswordUser),
 			RoleId:        2,
 			EmailVerified: true,
