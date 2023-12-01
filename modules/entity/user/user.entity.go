@@ -9,19 +9,18 @@ type User struct {
 	RoleId        uint
 	Email         string     `json:"Email" form:"Email" validate:"required,email"`
 	GoogleId      string     `json:"GoogleId" form:"GoogleId"`
-	Username      string     `json:"Username" form:"Username" validate:"required"`
 	Password      string     `json:"Password" form:"Password" validate:"required,min=8"`
 	EmailVerified bool       `json:"EmailVerified"`
 	UserDetail    UserDetail `gorm:"foreignKey:UserId"`
 }
 
 type RegisterRequest struct {
-	FirstName string `json:"FirstName" form:"FirstName" validate:"required"`
-	LastName  string `json:"LastName" form:"LastName" validate:"required"`
-	Email     string `json:"Email" form:"Email" validate:"required,email"`
-	Username  string `json:"Username" form:"Username" validate:"required"`
-	Phone     string `json:"Phone" form:"Phone" validate:"required,min=10,max=15,numeric"`
-	Password  string `json:"Password" form:"Password" validate:"required,min=8"`
+	FirstName       string `json:"FirstName" form:"FirstName" validate:"required"`
+	LastName        string `json:"LastName" form:"LastName" validate:"required"`
+	Email           string `json:"Email" form:"Email" validate:"required,email"`
+	Phone           string `json:"Phone" form:"Phone" validate:"required,min=10,max=15,numeric"`
+	Password        string `json:"Password" form:"Password" validate:"required,min=8"`
+	ConfirmPassword string `json:"ConfirmPassword" form:"ConfirmPassword" validate:"required,min=8"`
 }
 
 type LoginRequest struct {
@@ -33,7 +32,6 @@ type AuthResponse struct {
 	ID           uint   `json:"Id" form:"Id"`
 	GoogleId     string `json:"GoogleId" form:"GoogleId"`
 	Email        string `json:"Email" form:"Email" validate:"required,email"`
-	Username     string `json:"Username" form:"Username" validate:"required"`
 	FirstName    string `json:"FirstName" form:"FirstName"`
 	LastName     string `json:"LastName" form:"LastName"`
 	Phone        string `json:"Phone" form:"Phone"`

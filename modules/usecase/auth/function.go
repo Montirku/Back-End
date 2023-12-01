@@ -19,6 +19,10 @@ func (ac *authUsecase) Register(request *ue.RegisterRequest) error {
 		return err
 	}
 
+	if request.Password != request.ConfirmPassword {
+		return errors.New("password doesn't match")
+	}
+
 	hashedPassword, err := pw.HashPassword(request.Password)
 	if err != nil {
 		return err

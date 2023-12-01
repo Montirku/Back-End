@@ -27,7 +27,6 @@ func (ar *authRepo) Login(email string) (*ue.AuthResponse, string, uint, bool, e
 		ID:           user.ID,
 		GoogleId:     user.GoogleId,
 		Email:        user.Email,
-		Username:     user.Username,
 		FirstName:    user.UserDetail.FirstName,
 		LastName:     user.UserDetail.LastName,
 		Phone:        user.UserDetail.Phone,
@@ -46,7 +45,6 @@ func (ar *authRepo) CreateUser(user *ue.RegisterRequest) error {
 	userData := ue.User{
 		RoleId:        2,
 		Email:         user.Email,
-		Username:      user.Username,
 		Password:      user.Password,
 		EmailVerified: false,
 		UserDetail: ue.UserDetail{
