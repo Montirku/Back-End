@@ -8,7 +8,7 @@ import (
 type AuthRepo interface {
 	GetUserByEmail(email string) (*ue.User, error)
 	Login(email string) (*ue.AuthResponse, string, uint, bool, error)
-	CreateUser(user *ue.RegisterRequest) error
+	CreateUser(user *ue.RegisterRequest) (*ue.RegisterResponse, error)
 	UserRecovery(userId uint, codeVer string) error
 	UpdateUserRecovery(userId uint, codeVer string) error
 	GetUserRecovery(userId uint) (ue.UserRecovery, error)

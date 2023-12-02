@@ -18,7 +18,7 @@ func (ah *AuthHandler) Register() echo.HandlerFunc {
 			})
 		}
 
-		err := ah.authUsecase.Register(&request)
+		data, err := ah.authUsecase.Register(&request)
 		if err != nil {
 			return c.JSON(http.StatusInternalServerError, echo.Map{
 				"Status":  http.StatusInternalServerError,
@@ -28,7 +28,8 @@ func (ah *AuthHandler) Register() echo.HandlerFunc {
 
 		return c.JSON(http.StatusOK, echo.Map{
 			"Status":  http.StatusOK,
-			"Message": "Registration Successful",
+			"Message": "Registrasi berhasil",
+			"Data":    data,
 		})
 	}
 }
