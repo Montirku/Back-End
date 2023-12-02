@@ -6,7 +6,7 @@ import (
 
 type User struct {
 	*gorm.Model   `json:"-"`
-	RoleId        uint
+	RoleId        uint       `json:"RoleId" form:"RoleId"`
 	Email         string     `json:"Email" form:"Email" validate:"required,email"`
 	GoogleId      string     `json:"GoogleId" form:"GoogleId"`
 	Password      string     `json:"Password" form:"Password" validate:"required,min=8"`
@@ -18,9 +18,17 @@ type RegisterRequest struct {
 	FirstName       string `json:"FirstName" form:"FirstName" validate:"required"`
 	LastName        string `json:"LastName" form:"LastName" validate:"required"`
 	Email           string `json:"Email" form:"Email" validate:"required,email"`
-	Phone           string `json:"Phone" form:"Phone" validate:"required,min=10,max=15,numeric"`
 	Password        string `json:"Password" form:"Password" validate:"required,min=8"`
 	ConfirmPassword string `json:"ConfirmPassword" form:"ConfirmPassword" validate:"required,min=8"`
+}
+
+type RegisterResponse struct {
+	ID        uint   `json:"Id" form:"Id"`
+	RoleId    uint   `json:"RoleId" form:"RoleId"`
+	FirstName string `json:"FirstName" form:"FirstName" validate:"required"`
+	LastName  string `json:"LastName" form:"LastName" validate:"required"`
+	Email     string `json:"Email" form:"Email" validate:"required,email"`
+	Password  string `json:"Password" form:"Password" validate:"required,min=8"`
 }
 
 type LoginRequest struct {

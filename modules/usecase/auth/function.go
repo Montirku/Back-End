@@ -14,28 +14,30 @@ import (
 	ue "github.com/fazaalexander/montirku-be/modules/entity/user"
 )
 
-func (ac *authUsecase) Register(request *ue.RegisterRequest) error {
+func (ac *authUsecase) Register(request *ue.RegisterRequest) (interface{}, error) {
 	if err := vld.Validation(request); err != nil {
-		return err
+		return nil, err
 	}
 
 	if request.Password != request.ConfirmPassword {
-		return errors.New("password doesn't match")
+		return nil, errors.New("password tidak cocok")
 	}
 
 	hashedPassword, err := pw.HashPassword(request.Password)
 	if err != nil {
-		return err
+		return nil, err
 	}
 
 	request.Password = string(hashedPassword)
 
-	err = ac.authRepo.CreateUser(request)
+	response, err := ac.authRepo.CreateUser(request)
 	if err != nil {
-		return err
+		return nil, err
 	}
 
-	return nil
+	response.Password = request.ConfirmPassword
+
+	return response, nil
 }
 
 func (ac *authUsecase) Login(request *ue.LoginRequest) (interface{}, uint, error) {

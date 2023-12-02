@@ -36,10 +36,10 @@ func (ar *authRepo) Login(email string) (*ue.AuthResponse, string, uint, bool, e
 	return response, user.Password, user.RoleId, user.EmailVerified, nil
 }
 
-func (ar *authRepo) CreateUser(user *ue.RegisterRequest) error {
+func (ar *authRepo) CreateUser(user *ue.RegisterRequest) (*ue.RegisterResponse, error) {
 	existingUser := ue.User{}
 	if err := ar.db.Where("email = ?", user.Email).First(&existingUser).Error; err == nil {
-		return errors.New("email already exists")
+		return nil, errors.New("email sudah terdaftar")
 	}
 
 	userData := ue.User{
@@ -50,15 +50,22 @@ func (ar *authRepo) CreateUser(user *ue.RegisterRequest) error {
 		UserDetail: ue.UserDetail{
 			FirstName: user.FirstName,
 			LastName:  user.LastName,
-			Phone:     user.Phone,
 		},
 	}
 
 	if err := ar.db.Create(&userData).Error; err != nil {
-		return err
+		return nil, err
 	}
 
-	return nil
+	response := &ue.RegisterResponse{
+		ID:        userData.ID,
+		RoleId:    userData.RoleId,
+		FirstName: userData.UserDetail.FirstName,
+		LastName:  userData.UserDetail.LastName,
+		Email:     userData.Email,
+	}
+
+	return response, nil
 }
 func (ar *authRepo) GetUserRecovery(userId uint) (ue.UserRecovery, error) {
 	var recovery ue.UserRecovery

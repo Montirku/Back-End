@@ -14,15 +14,15 @@ func Validation(request interface{}) error {
 			message := ""
 			for _, e := range validationErrs {
 				if e.Tag() == "required" && e.Field() == "Email" {
-					message = fmt.Sprintf("Please enter %s", e.Field())
+					message = fmt.Sprintf("%s tidak boleh kosong", e.Field())
 				} else if e.Tag() == "required" {
-					message = fmt.Sprintf("Please enter %s", e.Field())
+					message = fmt.Sprintf("%s tidak boleh kosong", e.Field())
 				} else if e.Tag() == "email" {
-					message = "Invalid email"
+					message = "email tidak valid"
 				} else if e.Tag() == "max" && e.Field() == "Phone" {
-					message = "Phone number cannot be more than 13 digits"
+					message = "nomor telepon tidak boleh lebih dari 13 digit"
 				} else if e.Field() == "Phone" || e.Tag() == "min" || e.Tag() == "max" || e.Tag() == "numeric" {
-					message = fmt.Sprintf("%s invalid", e.Field())
+					message = fmt.Sprintf("%s tidak valid", e.Field())
 				}
 			}
 			return errors.New(message)
