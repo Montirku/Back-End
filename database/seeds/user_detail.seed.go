@@ -20,6 +20,13 @@ func CreateUserDetail() []*ue.UserDetail {
 			ProfilePhoto: "",
 			UserId:       2,
 		},
+		{
+			FirstName:    "Anwar",
+			LastName:     "Saipul",
+			Phone:        "08917283109283",
+			ProfilePhoto: "",
+			UserId:       3,
+		},
 	}
 
 	return userDetails

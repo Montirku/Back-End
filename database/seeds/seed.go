@@ -13,6 +13,12 @@ func RegisterSeed(db *gorm.DB) []Seed {
 		{Seed: CreateRoles()},
 		{Seed: CreateUser()},
 		{Seed: CreateUserDetail()},
+		{Seed: CreateBengkelCategory()},
+		{Seed: CreateBengkel()},
+		{Seed: CreateBengkelAddress()},
+		{Seed: CreateOperationalTime()},
+		{Seed: CreateBengkelServices()},
+		{Seed: CreateBengkelRating()},
 	}
 }
 

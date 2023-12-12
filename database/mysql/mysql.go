@@ -5,6 +5,7 @@ import (
 
 	"github.com/fazaalexander/montirku-be/config"
 	"github.com/fazaalexander/montirku-be/database/seeds"
+	bt "github.com/fazaalexander/montirku-be/modules/entity/bengkel"
 	re "github.com/fazaalexander/montirku-be/modules/entity/role"
 	ue "github.com/fazaalexander/montirku-be/modules/entity/user"
 
@@ -45,6 +46,12 @@ func InitialMigration() {
 		ue.User{},
 		ue.UserDetail{},
 		ue.UserRecovery{},
+		bt.BengkelCategory{},
+		bt.Bengkel{},
+		bt.BengkelAddress{},
+		bt.OperationalTime{},
+		bt.BengkelServices{},
+		bt.BengkelRating{},
 	)
 	DB.Migrator().HasConstraint(&ue.User{}, "UserDetail")
 	DB.Migrator().HasConstraint(&re.Role{}, "Users")

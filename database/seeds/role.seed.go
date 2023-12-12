@@ -8,6 +8,7 @@ func CreateRoles() []*re.Role {
 	roles := []*re.Role{
 		{Role: "Admin"},
 		{Role: "User"},
+		{Role: "Mitra"},
 	}
 
 	return roles

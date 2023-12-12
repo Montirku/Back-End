@@ -1,17 +1,20 @@
 package user
 
 import (
+	bt "github.com/fazaalexander/montirku-be/modules/entity/bengkel"
 	"gorm.io/gorm"
 )
 
 type User struct {
 	*gorm.Model   `json:"-"`
-	RoleId        uint       `json:"RoleId" form:"RoleId"`
-	Email         string     `json:"Email" form:"Email" validate:"required,email"`
-	GoogleId      string     `json:"GoogleId" form:"GoogleId"`
-	Password      string     `json:"Password" form:"Password" validate:"required,min=8"`
-	EmailVerified bool       `json:"EmailVerified"`
-	UserDetail    UserDetail `gorm:"foreignKey:UserId"`
+	RoleId        uint               `json:"RoleId" form:"RoleId"`
+	Email         string             `json:"Email" form:"Email" validate:"required,email"`
+	GoogleId      string             `json:"GoogleId" form:"GoogleId"`
+	Password      string             `json:"Password" form:"Password" validate:"required,min=8"`
+	EmailVerified bool               `json:"EmailVerified"`
+	UserDetail    UserDetail         `gorm:"foreignKey:UserId"`
+	Bengkel       []bt.Bengkel       `gorm:"foreignKey:UserId"`
+	BengkelRating []bt.BengkelRating `gorm:"foreignKey:UserId"`
 }
 
 type RegisterRequest struct {
