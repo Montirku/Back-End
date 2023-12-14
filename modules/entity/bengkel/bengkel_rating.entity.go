@@ -8,6 +8,7 @@ type BengkelRating struct {
 	Comment     string  `json:"Comment" form:"Comment"`
 	UserId      uint    `json:"UserId" form:"UserId"`
 	BengkelId   uint    `json:"BengkelId" form:"BengkelId"`
+	// TransactionDetailId uint    `json:"TransactionDetailId" form:"TransactionDetailId"`
 }
 
 // type GetAllBengkelRatingResponse struct {

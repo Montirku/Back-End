@@ -17,6 +17,13 @@ type User struct {
 	BengkelRating []bt.BengkelRating `gorm:"foreignKey:UserId"`
 }
 
+type UserResponse struct {
+	FirstName string `json:"FirstName" form:"FirstName" validate:"required"`
+	LastName  string `json:"LastName" form:"LastName" validate:"required"`
+	Email     string `json:"Email" form:"Email" validate:"required,email"`
+	Phone     string `json:"Phone" form:"Phone"`
+}
+
 type RegisterRequest struct {
 	FirstName       string `json:"FirstName" form:"FirstName" validate:"required"`
 	LastName        string `json:"LastName" form:"LastName" validate:"required"`

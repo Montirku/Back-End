@@ -7,6 +7,7 @@ import (
 	"github.com/fazaalexander/montirku-be/database/seeds"
 	bt "github.com/fazaalexander/montirku-be/modules/entity/bengkel"
 	re "github.com/fazaalexander/montirku-be/modules/entity/role"
+	te "github.com/fazaalexander/montirku-be/modules/entity/transaction"
 	ue "github.com/fazaalexander/montirku-be/modules/entity/user"
 
 	"gorm.io/driver/mysql"
@@ -52,7 +53,10 @@ func InitialMigration() {
 		bt.OperationalTime{},
 		bt.BengkelServices{},
 		bt.BengkelRating{},
+		te.Transaction{},
+		te.TransactionDetail{},
 	)
 	DB.Migrator().HasConstraint(&ue.User{}, "UserDetail")
 	DB.Migrator().HasConstraint(&re.Role{}, "Users")
+	DB.Migrator().HasConstraint(&bt.BengkelServices{}, "TransactionDetail")
 }
