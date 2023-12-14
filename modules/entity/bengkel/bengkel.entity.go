@@ -22,6 +22,7 @@ type Bengkel struct {
 }
 
 type BengkelResponse struct {
+	BengkelId       string
 	Category        string
 	Name            string
 	PhoneNumber     string
@@ -34,6 +35,7 @@ type BengkelResponse struct {
 }
 
 type BengkelDetailResponse struct {
+	BengkelId       string
 	Category        string
 	Name            string
 	PhoneNumber     string

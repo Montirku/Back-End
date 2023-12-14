@@ -14,6 +14,7 @@ type BengkelServices struct {
 }
 
 type BengkelServicesResponse struct {
+	ServiceId string
 	Name  string
 	Price float64
 }

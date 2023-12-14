@@ -50,6 +50,7 @@ func (bh *BengkelHandler) GetAllBengkel() echo.HandlerFunc {
 		var bengkelResponses []bt.BengkelResponse
 		for _, bengkel := range bengkels {
 			bengkelResponse := bt.BengkelResponse{
+				BengkelId:       strconv.FormatUint(uint64(bengkel.ID), 10),
 				Category:        bengkel.BengkelCategory.Category,
 				Name:            bengkel.Name,
 				PhoneNumber:     bengkel.PhoneNumber,
@@ -108,8 +109,9 @@ func (bh *BengkelHandler) GetBengkelById() echo.HandlerFunc {
 		var bengkelServicesResponse []bt.BengkelServicesResponse
 		for _, service := range bengkelServices {
 			BengkelService := bt.BengkelServicesResponse{
-				Name:  service.Name,
-				Price: service.Price,
+				ServiceId: strconv.FormatUint(uint64(service.ID), 10),
+				Name:      service.Name,
+				Price:     service.Price,
 			}
 			bengkelServicesResponse = append(bengkelServicesResponse, BengkelService)
 		}
@@ -125,6 +127,7 @@ func (bh *BengkelHandler) GetBengkelById() echo.HandlerFunc {
 		}
 
 		bengkelResponse := bt.BengkelDetailResponse{
+			BengkelId:       strconv.FormatUint(uint64(bengkel.ID), 10),
 			Category:        bengkel.BengkelCategory.Category,
 			Name:            bengkel.Name,
 			PhoneNumber:     bengkel.PhoneNumber,
@@ -194,6 +197,7 @@ func (bh *BengkelHandler) FilterBengkel() echo.HandlerFunc {
 			var bengkelResponses []bt.BengkelResponse
 			for _, bengkel := range bengkels {
 				bengkelResponse := bt.BengkelResponse{
+					BengkelId:       strconv.FormatUint(uint64(bengkel.ID), 10),
 					Category:        bengkel.BengkelCategory.Category,
 					Name:            bengkel.Name,
 					PhoneNumber:     bengkel.PhoneNumber,
